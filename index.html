@@ -3,10 +3,46 @@
   <head>
     <title>Shorten things here</title>
   </head>
+  <center>
+  <h1> World's Crappiest URL Shortener </h1>
   <body>
     smol things are smol<br />
     swol things are swol<br />
-    and when we all lol<br />
-    i walk into pole
+    and when I walk into pole<br />
+    we all lol
   </body>
+  <br><br/>
+  <form name="shortenerForm" method="POST" onsubmit="return validateForm()">
+      URL:<br/>
+      <input type = "text" name="longUrl"><br/>
+      <br></br>
+      Abbreviation:<br/>
+      <input type="text" name="shortUrl">
+      <br><br/>
+      <input type="submit" value="Submit">
+  </form>
+  </center>
 </html>
+
+
+<script>
+  // Source: https://stackoverflow.com/questions/5717093/check-if-a-javascript-string-is-a-url
+  const validateURL = (string) => {
+    try {
+      new URL(string);
+      return true;
+    } catch (_) {
+      alert("URL " + string + " is invalid")
+      return false;
+    }
+  }
+  function validateForm() {
+    var longUrl = document.forms["shortenerForm"]["longUrl"].value;
+    var shortUrl = document.forms["shortenerForm"]["shortUrl"].value;
+    if (!(validateURL(longUrl) && shortURL != "")) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+</script>
